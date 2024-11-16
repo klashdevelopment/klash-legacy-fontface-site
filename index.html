@@ -1,0 +1,395 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quadpad Export</title>
+
+<style>
+    /* CSS */
+@font-face {
+    font-family: "KlashLegacy";
+    src: url("https://raw.githack.com/klashdevelopment/mvn/main/fonts/KlashLegacy.ttf");
+}
+
+@font-face {
+    font-family: "KlashLegacyMono";
+    src: url("https://raw.githack.com/klashdevelopment/mvn/main/fonts/KlashLegacyMono.ttf");
+}
+
+html,
+body {
+    background: #252425;
+    color: white;
+    letter-spacing: 2px;
+    font-family: "KlashLegacy";
+    margin: 0;
+    padding: 0;
+}
+
+.leftdiv {
+    width: 50%;
+    padding-left: 15px;
+    padding-top: 15px;
+}
+
+.leftdiv h1 {
+    font-size: 60px;
+    margin: 0;
+}
+
+.leftdiv h3 {
+    font-size: 20px;
+    margin: 3px;
+}
+
+.split {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+}
+
+.rightdiv {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.rightdiv img {
+    width: 50%;
+    border: 5px solid #ffffff20;
+    transition: all 0.2s ease;
+    z-index: 10;
+}
+
+.rightdiv:hover img {
+    scale: 0.95;
+    rotate: -5deg;
+    border-color: #ffffff50;
+    transform: translateX(-100px);
+}
+
+.things {
+    display: none;
+    flex-direction: column;
+    z-index: 2;
+    position: absolute;
+    left: 50px;
+    transition: transform 0.2s ease;
+    width: 75%;
+}
+
+.rightdiv:hover .things {
+    display: flex;
+    animation: move 0.2s ease forwards;
+}
+
+@keyframes move {
+    0% {
+        transform: translateX(0px);
+    }
+
+    100% {
+        transform: translateX(38%);
+    }
+}
+
+.line {
+    width: 100%;
+    height: 5px;
+    margin: 10px 0;
+    background-color: #333;
+}
+.line-thin {
+    height: 2px;
+}
+.icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+.icons img {
+    height: 22px;
+}
+@keyframes colorshift {
+    0% {
+        color: white;
+    }
+
+    25% {
+        color: #82FAFB;
+    }
+
+    50% {
+        color: #E77FF8;
+    }
+
+    75% {
+        color: rgb(255, 123, 0);
+    }
+
+    100% {
+        color: #e9edff;
+    }
+}
+
+@keyframes colorshift-bg {
+    0% {
+        background: white;
+    }
+
+    25% {
+        background: #82FAFB;
+    }
+
+    50% {
+        background: #E77FF8;
+    }
+
+    75% {
+        background: rgb(255, 123, 0);
+    }
+
+    100% {
+        background: #e9edff;
+    }
+}
+
+.colorshift {
+    animation: colorshift 6s linear infinite;
+}
+
+.colorshift-bg {
+    animation: colorshift-bg 6s linear infinite;
+}
+
+.sl,
+.sr {
+    box-sizing: border-box;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    width: 45%;
+}
+
+.sl {
+    width: 45%;
+    margin-right: 2%;
+    margin-left: 3%
+}
+
+.sr {
+    font-family: KlashLegacyMono;
+    letter-spacing: -2px;
+}
+
+.warning {
+    color: rgb(255, 155, 155);
+}
+
+button {
+    font-family: KlashLegacy;
+    background-color: #444;
+    animation: colorshift 6s linear infinite;
+    font-size: 14px;
+    display: flex;
+    gap: 2px;
+    align-items: center;
+    justify-content: center;
+    transition: font-size 0.1s ease;
+    padding: 1px 0;
+}
+
+button.selected {
+    border: 2px solid;
+}
+
+button:not(.selected) {
+    border: 2px solid #ffffff20;
+}
+
+button:hover {
+    font-size: 16px;
+    padding: 0;
+}
+.center-dls {
+    width: 100%;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+}
+.dl-item {
+    width: 90%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2px;
+    border-radius: 6px;
+    background-color: #333;
+}
+code {
+    font-family: JetBrains Mono, Fira Code, monospace;
+    letter-spacing: 0px;
+    font-size: 12px;
+}
+.p2 {
+    padding: 2px !important;
+}
+button img {
+    height: 16px;
+}
+</style>
+</head>
+<body>
+<!--- HTML --->
+<div class="split">
+    <div class="leftdiv">
+        <h1 class="text-effect">KLASH</h1>
+        <h1 class="text-effect">LEGACY</h1>
+        <h3 class="text-effect colorshift">PIXEL ART TYPEFACE</h3>
+    </div>
+    <div class="rightdiv"> <img src="https://raw.githack.com/klashdevelopment/mvn/main/fonts/KlashLegacyGuide.png">
+        <div class="things"> <b>Legacy Guide</b> <span>An early image used in development for Klash Legacy</span> </div>
+    </div>
+</div>
+<div class="line colorshift-bg"></div>
+<div class="split">
+    <div class="sl"> <b>regular</b>
+        <span>The regular classic version of the Klash Legacy typeface. Created for pixel writing with a video-game aestetic. For almost all use cases.</span>
+        <button class="selected sel-btn" data-font="regular">Choose Regular</button> </div>
+    <div class="sr"> <b>monospace</b> <span>An alternative spacing. <span class="warning">Discontinued</span> with newer
+        versions of Klash Legacy. Klash Code reccomended for future usage.</span>
+        <button class="sel-btn" data-font="mono">Choose Monospace</button> </div>
+</div>
+<div class="line"></div>
+<div class="center-dls">
+    <span>Try <span class="fillWithNAME"></span> yourslef</span>
+    <button class="p2 downloadFont">Download <span class="fillWithFILE"></span></button>
+    <button class="p2" id="discord"><img src="https://raw.githubusercontent.com/klashdevelopment/mvn/refs/heads/main/fonts/chat.png">Chat with us on Discord</button>
+    <div class="dl-item">
+        <span>CSS IMPORT</span>
+        <code>@import url("<span class="fillWithURL"></span>")</code>
+    </div>
+</div>
+<div class="line colorshift-bg"></div>
+<div class="center-dls">
+    <div class="dl-item">
+        <span>KLASH LEGACY ICONS</span>
+        <div class="icons">
+            <img src="https://raw.githubusercontent.com/klashdevelopment/mvn/refs/heads/main/fonts/chat.png">
+            <img src="https://raw.githubusercontent.com/klashdevelopment/mvn/refs/heads/main/fonts/gear.png">
+            <img src="https://raw.githubusercontent.com/klashdevelopment/mvn/refs/heads/main/fonts/single_user.png">
+            <img src="https://raw.githubusercontent.com/klashdevelopment/mvn/refs/heads/main/fonts/double_user.png">
+        </div>
+    </div>
+    <div class="dl-item">
+        <b>THANKS TO</b>
+        <span><i>alecrac3r22</i> and <i>gavingogaming</i> from Klash</span>
+    </div>
+</div>
+<script type="text/javascript">
+    const ltrs = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()+_-=[]{}\\|/?><,.;:'\"".split('');
+document.querySelectorAll('.text-effect').forEach(itm => {
+    itm.addEventListener('mouseenter', () => {
+        if (itm.dataset.scrambling == "true") {
+            return;
+        }
+        itm.dataset.scrambling = "true";
+        const before = itm.textContent;
+        const length = before.length;
+        let scrambleInterval, unscrambleTimeout;
+        const rdm = (len) => {
+            return Array.from({
+                length: len
+            }, () => ltrs[Math.floor(Math.random() * ltrs.length)]).join('');
+        };
+        let step = 0;
+        scrambleInterval = setInterval(() => {
+            if (step < length) {
+                itm.textContent = rdm(length);
+                step++;
+            } else {
+                clearInterval(scrambleInterval);
+                let unscrambleStep = 0;
+                unscrambleTimeout = setInterval(() => {
+                    itm.textContent = before.slice(0, unscrambleStep + 1) + rdm(length - unscrambleStep - 1);
+                    unscrambleStep++;
+                    if (unscrambleStep >= length) {
+                        itm.textContent = before;
+                        clearInterval(unscrambleTimeout);
+                        itm.dataset.scrambling = "false";
+                    }
+                }, 50);
+            }
+        }, 30);
+    });
+});
+var selectedFont = "regular";
+var sels = document.querySelectorAll('.sel-btn');
+sels.forEach(selBtn => {
+    selBtn.addEventListener('click', (e) => {
+        sels.forEach(sb => sb.classList.remove('selected'));
+        selBtn.classList.add('selected');
+        selectedFont = selBtn.dataset.font;
+        updateThings(selectedFont);
+    })
+});
+var fonts = {
+    "regular": {
+        "url": "https://raw.githack.com/klashdevelopment/mvn/main/fonts/KlashLegacy.ttf",
+        "name": "Klash Legacy",
+        "file": "KlashLegacy.ttf"
+    },
+    "mono": {
+        "url": "https://raw.githack.com/klashdevelopment/mvn/main/fonts/KlashLegacyMono.ttf",
+        "name": "Klash Legacy Monospace",
+        "file": "KlashLegacyMono.ttf"
+    }
+}
+function recreateNode(el, withChildren) {
+    if (withChildren) {
+        el.parentNode.replaceChild(el.cloneNode(true), el);
+    }
+    else {
+        var newEl = el.cloneNode(false);
+        while (el.hasChildNodes()) newEl.appendChild(el.firstChild);
+        el.parentNode.replaceChild(newEl, el);
+    }
+}
+
+function updateThings(input) {
+    var font = fonts[input];
+    document.querySelectorAll('.fillWithNAME').forEach(x=>x.textContent=font.name);
+    document.querySelectorAll('.fillWithURL').forEach(x => x.textContent = font.url);
+    document.querySelectorAll('.fillWithFILE').forEach(x => x.textContent = font.file);
+}
+
+updateThings(selectedFont);
+document.querySelectorAll('.downloadFont').forEach(x => {
+    x.addEventListener('click', () => {
+        var a = document.createElement('a');
+        a.href = fonts[selectedFont].url;
+        a.download = fonts[selectedFont].file;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    })
+});
+document.querySelector('#discord').addEventListener('click', ()=>{
+    window.open("https://discord.gg/Smb9wMWadU");
+})
+</script>
+    
+</body>
+</html>
+                

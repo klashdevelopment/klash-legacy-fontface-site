@@ -12,10 +12,17 @@
     font-family: "KlashLegacy";
     src: url("https://raw.githack.com/klashdevelopment/mvn/main/fonts/KlashLegacy.ttf");
 }
-
 @font-face {
     font-family: "KlashLegacyMono";
     src: url("https://raw.githack.com/klashdevelopment/mvn/main/fonts/KlashLegacyMono.ttf");
+}
+@font-face {
+    font-family: "KlashLegacyClassic";
+    src: url("https://raw.githack.com/klashdevelopment/mvn/main/fonts/KlashLegacy-V1.ttf");
+}
+@font-face {
+    font-family: "KlashLegacyClassicMono";
+    src: url("https://raw.githack.com/klashdevelopment/mvn/main/fonts/KlashLegacyMono-V1.ttf");
 }
 
 html,
@@ -28,10 +35,10 @@ body {
     padding: 0;
 }
 
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 1000px) {
     body {
-        max-width: 70vw;
-        margin-left: 15vw;
+        max-width: 50vw;
+        margin-left: 25vw;
     }
 }
 
@@ -53,7 +60,7 @@ body {
 
 .split {
     display: flex;
-    overflow: hidden;
+    overflow: visible;
     width: 100%;
 }
 
@@ -65,18 +72,37 @@ body {
     position: relative;
 }
 
+@keyframes imagechange {
+    0% {
+        opacity: 1;
+    }
+    1% {
+        opacity: 1;
+    }
+    5% {
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 .rightdiv img {
     width: 50%;
     border: 5px solid #ffffff20;
     transition: all 0.2s ease;
     z-index: 10;
+    /* animation: imagechange 5s linear infinite; */
 }
 
 .rightdiv:hover img {
     scale: 0.95;
     rotate: -5deg;
     border-color: #ffffff50;
-    transform: translateX(-100px);
+    transform: translateX(-200px) translateY(-15px);
 }
 
 .things {
@@ -187,12 +213,8 @@ body {
 .sl {
     width: 45%;
     margin-right: 2%;
-    margin-left: 3%
-}
-
-.sr {
-    font-family: KlashLegacyMono;
-    letter-spacing: -2px;
+    margin-left: 3%;
+    font-family: KlashLegacyClassic;
 }
 
 .warning {
@@ -200,7 +222,7 @@ body {
 }
 
 button {
-    font-family: KlashLegacy;
+    font-family: KlashLegacyClassic;
     background-color: #444;
     animation: colorshift 6s linear infinite;
     font-size: 14px;
@@ -247,6 +269,7 @@ button:hover {
 code {
     font-family: JetBrains Mono, Fira Code, monospace;
     letter-spacing: 0px;
+    color: #f5b2ff;
     font-size: 12px;
 }
 .p2 {
@@ -266,26 +289,33 @@ button img {
         <h3 class="text-effect colorshift">PIXEL ART TYPEFACE</h3>
     </div>
     <div class="rightdiv"> <img src="https://raw.githack.com/klashdevelopment/mvn/main/fonts/KlashLegacyGuide.png">
-        <div class="things"> <b>Legacy Guide</b> <span>An early image used in development for Klash Legacy</span> </div>
+        <div class="things"> <b>Font Guides</b> <span>Early images used for developing the Klash Legacy font.</span> <button id="next">NEXT</button> </div>
     </div>
 </div>
 <div class="line colorshift-bg"></div>
 <div class="split">
-    <div class="sl"> <b>regular</b>
-        <span>The regular classic version of the Klash Legacy typeface. Created for pixel writing with a video-game aestetic. For almost all use cases.</span>
-        <button class="selected sel-btn" data-font="regular">Choose Regular</button> </div>
-    <div class="sr"> <b>monospace</b> <span>An alternative spacing. <span class="warning">Discontinued</span> with newer
-        versions of Klash Legacy. Klash Code reccomended for future usage.</span>
-        <button class="sel-btn" data-font="mono">Choose Monospace</button> </div>
+    <div class="sl"> <b>CLASSIC</b>
+        <span>The original "V1" version of Klash Legacy. Best for cleaner interfaces and usage outside of gaming environments.</span>
+        <button class="sel-btn selected" data-font="classic">Classic Regular</button>
+        <button class="sel-btn" data-font="classicmono">Classic Monospace</button>
+    </div>
+    <div class="sr"> <b>MODERN</b>
+        <span>The modern version of the Klash Legacy typeface. Created for pixel writing with a video-game aestetic. Built for gaming.</span>
+        <button class="sel-btn" data-font="regular">Modern Regular</button>
+        <button class="sel-btn" data-font="mono">Modern Monospace</button> </div>
 </div>
 <div class="line"></div>
 <div class="center-dls">
-    <span>Try <span class="fillWithNAME"></span> yourslef</span>
+    <span>Try <span class="fillWithNAME"></span> yourself</span>
     <button class="p2 downloadFont">Download <span class="fillWithFILE"></span></button>
     <button class="p2" id="discord"><img src="https://raw.githubusercontent.com/klashdevelopment/mvn/refs/heads/main/fonts/chat.png">Chat with us on Discord</button>
     <div class="dl-item">
         <span>CSS IMPORT</span>
-        <code>@import url("<span class="fillWithURL"></span>")</code>
+        <code>@import url("https://legacy.klash.dev/legacy.css")</code>
+    </div>
+    <div class="dl-item">
+        <span>CSS FONT FAMILY</span>
+        <code>font-family: <span class="fillWithFONT"></span>;</code>
     </div>
 </div>
 <div class="line colorshift-bg"></div>
@@ -341,7 +371,7 @@ document.querySelectorAll('.text-effect').forEach(itm => {
         }, 30);
     });
 });
-var selectedFont = "regular";
+var selectedFont = "classic";
 var sels = document.querySelectorAll('.sel-btn');
 sels.forEach(selBtn => {
     selBtn.addEventListener('click', (e) => {
@@ -355,12 +385,26 @@ var fonts = {
     "regular": {
         "url": "https://raw.githack.com/klashdevelopment/mvn/main/fonts/KlashLegacy.ttf",
         "name": "Klash Legacy",
-        "file": "KlashLegacy.ttf"
+        "file": "KlashLegacy.ttf",
+        "font": "KlashLegacy"
     },
     "mono": {
         "url": "https://raw.githack.com/klashdevelopment/mvn/main/fonts/KlashLegacyMono.ttf",
-        "name": "Klash Legacy Monospace",
-        "file": "KlashLegacyMono.ttf"
+        "name": "Klash Legacy Mono",
+        "file": "KlashLegacyMono.ttf",
+        "font": "KlashLegacyMono"
+    },
+    "classic": {
+        "url": "https://raw.githack.com/klashdevelopment/mvn/main/fonts/KlashLegacyClassic.ttf",
+        "name": "Klash Legacy Classic",
+        "file": "KlashLegacyClassic.ttf",
+        "font": "KlashLegacyClassic"
+    },
+    "classicmono": {
+        "url": "https://raw.githack.com/klashdevelopment/mvn/main/fonts/KlashLegacyClassicMono.ttf",
+        "name": "Klash Legacy Classic Mono",
+        "file": "KlashLegacyClassicMono.ttf",
+        "font": "KlashLegacyClassicMono"
     }
 }
 function recreateNode(el, withChildren) {
@@ -379,6 +423,7 @@ function updateThings(input) {
     document.querySelectorAll('.fillWithNAME').forEach(x=>x.textContent=font.name);
     document.querySelectorAll('.fillWithURL').forEach(x => x.textContent = font.url);
     document.querySelectorAll('.fillWithFILE').forEach(x => x.textContent = font.file);
+    document.querySelectorAll('.fillWithFONT').forEach(x => x.textContent = font.font);
 }
 
 updateThings(selectedFont);
@@ -394,6 +439,14 @@ document.querySelectorAll('.downloadFont').forEach(x => {
 });
 document.querySelector('#discord').addEventListener('click', ()=>{
     window.open("https://discord.gg/Smb9wMWadU");
+})
+
+const image = ["https://raw.githack.com/klashdevelopment/mvn/main/fonts/KlashLegacyGuide.png","https://raw.githack.com/klashdevelopment/mvn/main/fonts/KlashLegacyGuideV2.png"];
+var NSRC = 1;
+
+document.querySelector('#next').addEventListener('click', ()=>{
+    document.querySelector(".rightdiv img").src = image[NSRC];
+    NSRC = 1 - NSRC;
 })
 </script>
     

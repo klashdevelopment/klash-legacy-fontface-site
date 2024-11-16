@@ -1,0 +1,16 @@
+@font-face {
+    font-family: "KlashLegacy";
+    src: url("https://raw.githack.com/klashdevelopment/mvn/main/fonts/KlashLegacy.ttf");
+}
+@font-face {
+    font-family: "KlashLegacyMono";
+    src: url("https://raw.githack.com/klashdevelopment/mvn/main/fonts/KlashLegacyMono.ttf");
+}
+@font-face {
+    font-family: "KlashLegacyClassic";
+    src: url("https://raw.githack.com/klashdevelopment/mvn/main/fonts/KlashLegacy-V1.ttf");
+}
+@font-face {
+    font-family: "KlashLegacyClassicMono";
+    src: url("https://raw.githack.com/klashdevelopment/mvn/main/fonts/KlashLegacyMono-V1.ttf");
+}

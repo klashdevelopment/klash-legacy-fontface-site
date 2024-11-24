@@ -433,8 +433,9 @@ const image = ["https://raw.githack.com/klashdevelopment/mvn/main/fonts/KlashLeg
 var NSRC = 1;
 
 document.querySelector('#next').addEventListener('click', ()=>{
+    NSRC = NSRC + 1;
+    if(NSRC > image.length) NSRC = 0;
     document.querySelector(".rightdiv img").src = image[NSRC];
-    NSRC = 1 - NSRC;
 })
 </script>
     

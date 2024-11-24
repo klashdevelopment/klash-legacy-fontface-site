@@ -8,29 +8,13 @@
 
 <style>
     /* CSS */
-@font-face {
-    font-family: "KlashLegacy";
-    src: url("https://raw.githack.com/klashdevelopment/mvn/main/fonts/KlashLegacy.ttf");
-}
-@font-face {
-    font-family: "KlashLegacyMono";
-    src: url("https://raw.githack.com/klashdevelopment/mvn/main/fonts/KlashLegacyMono.ttf");
-}
-@font-face {
-    font-family: "KlashLegacyClassic";
-    src: url("https://raw.githack.com/klashdevelopment/mvn/main/fonts/KlashLegacyClassic.ttf");
-}
-@font-face {
-    font-family: "KlashLegacyClassicMono";
-    src: url("https://raw.githack.com/klashdevelopment/mvn/main/fonts/KlashLegacyMonoClassic.ttf");
-}
+@import url("https://legacy.klash.dev/legacy.css");
 
 html,
 body {
     background: #252425;
     color: white;
-    letter-spacing: 1px;
-    font-family: "KlashLegacy";
+    font-family: "KlashLegacyClassic";
     margin: 0;
     padding: 0;
 }
@@ -214,7 +198,10 @@ body {
     width: 45%;
     margin-right: 2%;
     margin-left: 3%;
-    font-family: KlashLegacyClassic;
+}
+.sr {
+    font-family: KlashLegacy;
+    letter-spacing: 0px;
 }
 
 .warning {
